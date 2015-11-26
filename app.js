@@ -1,15 +1,6 @@
-var IP = "127.0.0.1"
-
-if (process.env.SSH_CONNECTION != null) {
-        
-        IP = "162.243.39.179"
-        
-}
-
-console.log(IP)
-
+var funcs = require('./funcs')
 var http = require('http')
-var express = require('express')
+var IP = funcs.quoteMe(process.env.NODESERVER)
 
 http.createServer(function(req, res) {
 
@@ -18,3 +9,4 @@ http.createServer(function(req, res) {
 
 }).listen(80, '127.0.0.1');
 
+console.log("HTTP server started at IP address: " + IP + " and port 80.")
